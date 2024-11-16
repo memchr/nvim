@@ -21,6 +21,34 @@ local cmp_source_buffer = {
   }
 }
 
+
+local mapping = {}
+
+function mapping.tab(fallback)
+  if cmp.visible() then
+    cmp.confirm({
+      select = true,
+      behavior = cmp.ConfirmBehavior.Replace,
+    })
+  else
+    fallback()
+  end
+end
+
+mapping.preset = {
+  cmdline = cmp.mapping.preset.cmdline {
+    ["<Tab>"] = cmp.mapping(function() mapping.tab(cmp.complete) end, { "c" })
+  },
+  insert = cmp.mapping.preset.insert {
+    ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),  -- Down
+    -- C-b (back) C-f (forward) for snippet placeholder navigation.
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<Tab>"] = cmp.mapping(mapping.tab, { "i", "s" }),
+  },
+}
+
+
 function M.setup()
   cmp.setup {
     sources = {
@@ -31,40 +59,27 @@ function M.setup()
     },
     -- FIXME: reconfigure this
     preselect = cmp.PreselectMode.Item,
-    mapping = cmp.mapping.preset.insert({
-      ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-      ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
-      -- C-b (back) C-f (forward) for snippet placeholder navigation.
-      ["<C-Space>"] = cmp.mapping.complete(),
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.confirm({
-            select = true,
-            behavior = cmp.ConfirmBehavior.Replace,
-          })
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-    }),
+    mapping = mapping.preset.insert,
     completion = {
       completeopt = 'menu,menuone,noinsert'
     },
 
   }
   cmp.setup.cmdline({ "/", "?" }, {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = mapping.preset.cmdline,
     sources = {
       cmp_source_buffer,
     }
   })
   -- use cmdline & path source for :
   cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = mapping.preset.cmdline,
     sources = cmp.config.sources({
       { name = 'path' }
     }, {
       { name = 'cmdline' }
+    }, {
+      cmp_source_buffer
     }),
     matching = { disallow_symbol_nonprefix_matching = false }
   })
