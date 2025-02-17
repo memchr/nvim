@@ -24,6 +24,17 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    -- theme
+    {
+      'navarasu/onedark.nvim',
+      config = function()
+        local onedark = require('onedark')
+        onedark.setup {
+          style = 'darker'
+        }
+        onedark.load()
+      end
+    },
     -- lsp
     -- TODO: lazy loading
     -- TODO: move to another file
