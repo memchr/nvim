@@ -55,7 +55,8 @@ function M.setup()
       { name = "nvim_lsp" },
       cmp_source_buffer,
       { name = "nvim_lsp_document_symbol" },
-      { name = "async_path" }
+      { name = "async_path" },
+      { name = "lazydev" },
     },
     -- FIXME: reconfigure this
     preselect = cmp.PreselectMode.Item,
