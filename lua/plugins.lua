@@ -33,9 +33,15 @@ require("lazy").setup({
         local lspconfig = require("lspconfig")
         -- FIXME: to lazy load cmp, make a capabilities object yourself
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        lspconfig.clangd.setup {
-          capabilities = capabilities,
+        local servers = {
+          clangd = {},
+          pyright = {},
         }
+
+        for server, config in pairs(servers) do
+          config.capabilities = capabilities
+          lspconfig[server].setup(config)
+        end
       end,
     },
     -- completion
