@@ -46,6 +46,9 @@ vim.keymap.set('n', ' a', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<F5>', ':w | make!<cr>')
 vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 
+vim.keymap.set('v', '<c-c>', '"+y')
+vim.keymap.set('n', '<c-c>', '"+yy')
+
 local misc= require("misc")
 _G.indent = misc.indent
 
