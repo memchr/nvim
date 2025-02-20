@@ -7,7 +7,15 @@ return {
       lazy_load = true,
     },
   },
-  -- TODO: auto pairs
+
+  -- autopairs
+  {
+    "echasnovski/mini.pairs",
+    event = "VeryLazy",
+    opts = {
+      modes = { insert = true, command = true, terminal = false },
+    },
+  },
 
   -- comments
   {
