@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 require("config.lazy")
-require('config').setup()
+require("config").setup()
 
 -- configurations
 local g, opt = vim.g, vim.opt

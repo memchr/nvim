@@ -4,15 +4,15 @@ return {
     "neovim/nvim-lspconfig",
     event = "LazyFile",
     opts = {
-      servers = require('config.lsp').servers,
+      servers = require("config.lsp").servers,
     },
     config = function(_, opts)
-      local lspconfig = require('lspconfig')
+      local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
-        config.compatibility = require('blink.cmp').get_lsp_capabilities(config.compatibility)
+        config.compatibility = require("blink.cmp").get_lsp_capabilities(config.compatibility)
         lspconfig[server].setup(config)
       end
-    end
+    end,
   },
 
   -- neovim lua development

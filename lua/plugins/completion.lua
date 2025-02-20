@@ -9,12 +9,12 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      keymap = { preset = 'super-tab' },
+      keymap = { preset = "super-tab" },
       appearance = {
         -- Fallback to nvi-cmp's highlight groups. compatibility
         use_nvim_cmp_as_default = true,
 
-        nerd_font_variant = 'normal',
+        nerd_font_variant = "normal",
       },
       completion = {
         -- Show documentation when selecting a completion item
@@ -22,8 +22,8 @@ return {
 
         menu = {
           draw = {
-            treesitter = { 'lsp' }
-          }
+            treesitter = { "lsp" },
+          },
         },
         -- Display a preview of the selected item on the current line
         -- TODO: enable
@@ -43,14 +43,13 @@ return {
       fuzzy = {
         prebuilt_binaries = {
           -- prefer build binary locally
-          download = false
-        }
+          download = false,
+        },
       },
       -- Experimental signature help support
       signature = {
         enabled = true,
-      }
+      },
     },
   },
 }
-

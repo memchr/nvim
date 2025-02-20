@@ -19,7 +19,7 @@ return {
   },
 
   -- visual studio like tabout
-  { "abecodes/tabout.nvim", opts = {}, },
+  { "abecodes/tabout.nvim", opts = {} },
 
   -- comments
   {
@@ -32,5 +32,4 @@ return {
   },
 
   -- TODO: text-objects
-
 }
