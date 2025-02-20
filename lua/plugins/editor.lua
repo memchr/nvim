@@ -35,7 +35,11 @@ return {
   },
 
   -- visual studio like tabout
-  { "abecodes/tabout.nvim", opts = {} },
+  {
+    "abecodes/tabout.nvim",
+    event = "InsertEnter",
+    opts = {},
+  },
 
   -- comments
   {
