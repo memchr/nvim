@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 require("config.lazy")
+require('config').setup()
 
 -- configurations
 local g, opt = vim.g, vim.opt
@@ -37,19 +38,6 @@ opt.wildmode = "longest:full,full"
 
 -- TODO: gui
 vim.o.guifont = "Cascadia Code:h11"
-
---------------------
--- Keybinding
---------------------
-
-vim.keymap.set("n", "=af", vim.lsp.buf.format, {})
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-vim.keymap.set("n", " a", vim.lsp.buf.code_action)
-vim.keymap.set("n", "<F5>", ":w | make!<cr>")
-vim.keymap.set("n", "K", vim.lsp.buf.hover)
-
-vim.keymap.set("v", "<c-c>", '"+y')
-vim.keymap.set("n", "<c-c>", '"+yy')
 
 local misc = require("misc")
 _G.indent = misc.indent
