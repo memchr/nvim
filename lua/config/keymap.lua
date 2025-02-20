@@ -31,6 +31,10 @@ function M.setup()
   map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
   map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
+  -- Add undo break-points
+  map("i", ",", ",<c-g>u")
+  map("i", ".", ".<c-g>u")
+  map("i", ";", ";<c-g>u")
   -- clipboard
   map("v", "<c-c>", '"+y')
   map("n", "<c-c>", '"+yy')
