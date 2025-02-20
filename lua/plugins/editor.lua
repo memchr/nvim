@@ -18,6 +18,22 @@ return {
     },
   },
 
+  -- surround actions
+  {
+    "echasnovski/mini.surround",
+    -- stylua: ignore
+    keys = {
+      { "sa" , desc = "Add Surrounding", mode = { "n", "v" } },
+      { "sd" , desc = "Delete Surrounding" },
+      { "sf" , desc = "Find Right Surrounding" },
+      { "sF" , desc = "Find Left Surrounding" },
+      { "sh" , desc = "Highlight Surrounding" },
+      { "sr" , desc = "Replace Surrounding" },
+      { "sn" , desc = "Update `MiniSurround.config.n_lines`" },
+    },
+    opts = {},
+  },
+
   -- visual studio like tabout
   { "abecodes/tabout.nvim", opts = {} },
 
