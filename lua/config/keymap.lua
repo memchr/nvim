@@ -35,6 +35,10 @@ function M.setup()
   map("i", ",", ",<c-g>u")
   map("i", ".", ".<c-g>u")
   map("i", ";", ";<c-g>u")
+
+  -- save file
+  map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
   -- clipboard
   map("v", "<c-c>", '"+y')
   map("n", "<c-c>", '"+yy')
