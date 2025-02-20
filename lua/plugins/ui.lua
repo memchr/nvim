@@ -31,6 +31,19 @@ return {
     },
   },
 
+  -- notifications
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      timeout = 3000,
+      stages = "fade",
+      top_down = false,
+    },
+    config = function(_, opts)
+      vim.notify = require("notify")
+      vim.notify.setup(opts)
+    end
+  },
   -- statusline
   {
     "nvim-lualine/lualine.nvim",
@@ -38,6 +51,7 @@ return {
     opts = {},
   },
 
+  -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
