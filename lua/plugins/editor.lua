@@ -1,4 +1,5 @@
 return {
+  -- colorise RGB code, etc.
   {
     "catgoose/nvim-colorizer.lua",
     event = "VeryLazy",
@@ -27,16 +28,9 @@ return {
     opts = {},
   },
 
+  {
+  },
+
   -- TODO: text-objects
 
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    cmd = "LazyDev",
-    opts = {
-      library = {
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
-    },
-  },
 }
