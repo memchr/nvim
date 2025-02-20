@@ -17,6 +17,9 @@ return {
     },
   },
 
+  -- visual studio like tabout
+  { "abecodes/tabout.nvim", opts = {}, },
+
   -- comments
   {
     "folke/ts-comments.nvim",
