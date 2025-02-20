@@ -11,6 +11,26 @@ return {
     end,
   },
 
+  -- tab line
+  {
+    "akinsho/bufferline.nvim",
+    ---@module 'bufferline'
+    ---@type bufferline.UserConfig
+    opts = {
+      options = {
+        diagnostics = 'nvim_lsp',
+        offsets = {
+          {
+            filetype = 'neo-tree',
+            text = 'Neotree',
+            highlight = 'Directory',
+            text_align = 'left',
+          },
+        }
+      }
+    },
+  },
+
   -- statusline
   {
     "nvim-lualine/lualine.nvim",
