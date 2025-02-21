@@ -48,7 +48,6 @@ function M.setup()
   map("n", "<c-c>", '"+yy')
 
   -- LSP
-  map("n", "=af", vim.lsp.buf.format, { desc = "Format Document" })
   map("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
   map("n", "K", vim.lsp.buf.hover)
 end
