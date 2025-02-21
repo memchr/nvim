@@ -63,23 +63,6 @@ return {
     opts = {},
   },
 
-  -- file explorer
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      window = {
-        mappings = {
-          ["l"] = "open",
-          ["h"] = "close_node",
-        },
-      },
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-  },
-
   -- ui components library
   { "MunifTanjim/nui.nvim", lazy = true },
 
