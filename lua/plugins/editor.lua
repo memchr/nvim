@@ -46,6 +46,11 @@ return {
     opts = {},
   },
 
+  {
+    "folke/which-key.nvim",
+    opts = {},
+  },
+
   -- search enhancement
   {
     "folke/flash.nvim",
