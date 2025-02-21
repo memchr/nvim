@@ -51,6 +51,11 @@ return {
     opts = {},
   },
 
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {},
+  },
+
   -- search enhancement
   {
     "folke/flash.nvim",
