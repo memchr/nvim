@@ -56,6 +56,12 @@ return {
     opts = {},
   },
 
+  -- diagnostics/quickfix/symbols list
+  {
+    "folke/trouble.nvim",
+    opts = {},
+  },
+
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
