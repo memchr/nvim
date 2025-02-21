@@ -1,6 +1,9 @@
 local M = {}
 
 M.clangd = {}
+M.pyright = {}
+M.gopls = {}
+M.rust_analyzer = {}
 
 M.lua_ls = {
   Lua = {
