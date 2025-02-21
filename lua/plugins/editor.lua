@@ -2,7 +2,6 @@ return {
   -- colorise RGB code, etc.
   {
     "catgoose/nvim-colorizer.lua",
-    event = "VeryLazy",
     main = "colorizer",
     opts = {
       lazy_load = true,
@@ -12,7 +11,7 @@ return {
   -- autopairs
   {
     "echasnovski/mini.pairs",
-    event = "VeryLazy",
+    event = "InsertEnter",
     opts = {
       modes = { insert = true, command = true, terminal = false },
     },
@@ -44,14 +43,12 @@ return {
   -- comments
   {
     "folke/ts-comments.nvim",
-    event = "VeryLazy",
     opts = {},
   },
 
   -- search enhancement
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
     vscode = true,
     ---@type Flash.Config
     opts = {},
