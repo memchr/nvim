@@ -55,7 +55,7 @@ return {
     config = function(_, opts)
       vim.notify = require("notify")
       vim.notify.setup(opts)
-    end
+    end,
   },
   -- statusline
   {
