@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+_G.log = require("log").new()
 
 require("config.lazy")
 require("config").setup()
