@@ -29,6 +29,10 @@ return {
         -- TODO: enable
         -- ghost_text = { enabled = true },
       },
+      cmdline = {
+        keymap = { preset = "super-tab" },
+        completion = { menu = { auto_show = true } },
+      },
       sources = {
         default = { "lazydev", "lsp", "path", "snippets", "buffer" },
         providers = {
