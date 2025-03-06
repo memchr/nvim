@@ -1,12 +1,12 @@
-local M = {}
-
-M.clangd = {}
-M.pyright = {}
-M.gopls = {}
-M.rust_analyzer = {}
-
-M.lua_ls = {
-  Lua = {
+---@diagnostic disable: missing-fields
+---@type { [string]:vim.lsp.ClientConfig }
+return {
+  clangd = {},
+  pyright = {},
+  gopls = {
+  },
+  rust_analyzer = {},
+  lua_ls = {
     settings = {
       Lua = {
         workspace = {
@@ -33,5 +33,3 @@ M.lua_ls = {
     },
   },
 }
-
-return M
