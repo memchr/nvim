@@ -54,4 +54,10 @@ return {
       },
     },
   },
+  evenBetterToml = {
+    formatter = {
+      arrayAutoCollapse = false,
+      arrayAutoExpand = false,
+    },
+  },
 }
