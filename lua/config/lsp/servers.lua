@@ -21,4 +21,5 @@ return {
     end,
   },
   taplo = {},
+  neocmake = {},
 }
