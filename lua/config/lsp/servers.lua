@@ -2,7 +2,7 @@
 ---@type { [string]:vim.lsp.ClientConfig }
 return {
   clangd = {},
-  pyright = {},
+  basedpyright = {},
   gopls = {},
   rust_analyzer = {},
   lua_ls = {},
