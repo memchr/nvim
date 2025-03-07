@@ -1,5 +1,5 @@
 ---@diagnostic disable: missing-fields
----@type { [string]:vim.lsp.ClientConfig }
+---@type { [string]:lspconfig.Config }
 return {
   clangd = {},
   basedpyright = {},
