@@ -33,9 +33,10 @@ local M = {
     disable = {
       -- NOTE: Dockerfile highlighting is buggy, disabled.
       "dockerfile",
-      -- NOTE: clangd supports semantic highlighting
+      -- NOTE: languages with semantic highlighting
       "cpp",
       "c",
+      "go",
     },
   },
   indent = { enable = true },
