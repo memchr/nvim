@@ -6,6 +6,7 @@ local util = require("lspconfig.util")
 return {
   clangd = {},
   basedpyright = {},
+  ruff = {},
   gopls = {},
   rust_analyzer = {},
   lua_ls = {},
