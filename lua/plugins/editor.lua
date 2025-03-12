@@ -47,96 +47,6 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    opts = {},
-  },
-
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {},
-  },
-
-  -- diagnostics/quickfix/symbols list
-  {
-    "folke/trouble.nvim",
-    opts = {},
-  },
-
-  -- file explorer
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      window = {
-        mappings = {
-          ["l"] = "open",
-          ["h"] = "close_node",
-          ["<c-p>"] = "focus_preview",
-          ["<c-f>"] = { "scroll_preview", config = { direction = -20 } },
-          ["<c-b>"] = { "scroll_preview", config = { direction = 20 } },
-        },
-      },
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-  },
-
-  {
-    "ibhagwan/fzf-lua",
-    init = function()
-      ---@diagnostic disable-next-line
-      vim.ui.select = function(...)
-        require("fzf-lua").register_ui_select()
-        return vim.ui.select(...)
-      end
-    end,
-    opts = {},
-  },
-
-  -- search enhancement
-  {
-    "folke/flash.nvim",
-    vscode = true,
-    ---@type Flash.Config
-    opts = {},
-    enabled = false,
-    -- stylua: ignore
-    keys = {
-      { "<M-f>", mode = { "n" }, function() require("flash").jump() end, desc = "Flash" },
-      {"s", mode = { "n", "o", "x" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      {"r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<C-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
-  },
-
-  -- global search and replace
-  {
-    "MagicDuck/grug-far.nvim",
-    opts = { headerMaxWidth = 80 },
-    cmd = "GrugFar",
-    keys = {
-      {
-        "<leader>sr",
-        function()
-          local grug = require("grug-far")
-          local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-          grug.open({
-            transient = true,
-            prefills = {
-              filesFilter = ext and ext ~= "" and "*." .. ext or nil,
-            },
-          })
-        end,
-        mode = { "n", "v" },
-        desc = "Search and Replace",
-      },
-    },
-  },
-
-  {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble" },
     event = "LazyFile",
@@ -148,6 +58,4 @@ return {
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous Todo Comment" },
     },
   },
-
-  -- TODO: text-objects
 }

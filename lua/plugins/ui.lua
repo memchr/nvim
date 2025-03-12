@@ -1,16 +1,4 @@
 return {
-  -- colorscheme
-  {
-    "navarasu/onedark.nvim",
-    config = function()
-      local onedark = require("onedark")
-      onedark.setup({
-        style = "darker",
-      })
-      onedark.load()
-    end,
-  },
-
   -- tab line
   {
     "akinsho/bufferline.nvim",
@@ -60,6 +48,12 @@ return {
   -- statusline
   {
     "nvim-lualine/lualine.nvim",
+    opts = {},
+  },
+
+  -- keymap hints
+  {
+    "folke/which-key.nvim",
     opts = {},
   },
 
