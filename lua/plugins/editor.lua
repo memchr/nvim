@@ -70,6 +70,8 @@ return {
         mappings = {
           ["l"] = "open",
           ["h"] = "close_node",
+          ["<c-f>"] = { "scroll_preview", config = { direction = -20 } },
+          ["<c-b>"] = { "scroll_preview", config = { direction = 20 } },
         },
       },
     },
