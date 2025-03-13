@@ -4,7 +4,15 @@ local util = require("lspconfig.util")
 ---@diagnostic disable: missing-fields
 ---@type { [string]:lspconfig.Config }
 return {
-  clangd = {},
+  clangd = {
+    cmd = {
+      "clangd",
+      "--enable-config",
+      "--malloc-trim",
+      -- INFO: remove after clangd-20
+      "--function-arg-placeholders=false",
+    },
+  },
   basedpyright = {},
   ruff = {},
   gopls = {},
