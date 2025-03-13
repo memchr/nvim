@@ -8,6 +8,7 @@ local function term_nav(dir)
   end
 end
 
+---@type LazySpec[]
 return {
   -- library used by other plugins
   { "nvim-lua/plenary.nvim", lazy = true },

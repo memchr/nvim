@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- colorise RGB code, etc.
   {

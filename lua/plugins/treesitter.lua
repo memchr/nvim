@@ -1,5 +1,6 @@
 local config = require("config.treesitter")
 
+---@type LazySpec[]
 return {
   {
     "nvim-treesitter/nvim-treesitter",
