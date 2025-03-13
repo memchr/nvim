@@ -31,7 +31,11 @@ return {
         -- ghost_text = { enabled = true },
       },
       cmdline = {
-        keymap = { preset = "super-tab" },
+        keymap = {
+          preset = "super-tab",
+          ["<C-p>"] = { "select_prev", "fallback" },
+          ["<C-n>"] = { "select_next", "fallback" },
+        },
         completion = { menu = { auto_show = true } },
       },
       sources = {
