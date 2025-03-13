@@ -7,7 +7,7 @@ return {
       enable = true,
     },
     completion = {
-      callSnippet = "Replace",
+      callSnippet = "Disable",
     },
     doc = {
       privateName = { "^_" },
