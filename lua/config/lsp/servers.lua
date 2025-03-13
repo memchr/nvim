@@ -23,4 +23,5 @@ return {
   },
   taplo = {},
   neocmake = {},
+  jsonls = {},
 }
