@@ -46,10 +46,6 @@ function M.setup()
   -- clipboard
   map("v", "<c-c>", '"+y')
   map("n", "<c-c>", '"+yy')
-
-  -- LSP
-  map("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
-  map("n", "K", vim.lsp.buf.hover)
 end
 
 return M

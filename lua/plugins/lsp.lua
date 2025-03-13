@@ -5,6 +5,11 @@ return {
     "neovim/nvim-lspconfig",
     event = "LazyFile",
     config = function()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          require("config.lsp.keymap")
+        end,
+      })
       local lspconfig = require("lspconfig")
       local lsp = require("config.lsp")
       for server, config in pairs(lsp.servers) do
