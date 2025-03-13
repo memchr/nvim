@@ -20,6 +20,9 @@ return {
       semicolon = "Disable",
       arrayIndex = "Disable",
     },
+    runtime = {
+      version = "LuaJIT",
+    },
   },
   gopls = {
     semanticTokens = true,
