@@ -9,7 +9,7 @@ local output = {
 
 function output.init()
   if not output.buffer then
-    output.buffer = api.nvim_create_buf(false, false)
+    output.buffer = api.nvim_create_buf(false, true)
     api.nvim_buf_set_name(output.buffer, "output")
   end
 
@@ -32,11 +32,13 @@ function output.init()
   end
 end
 
-function output.print(msg)
-  if type(msg) ~= "string" then
-    msg = vim.inspect(msg)
+function output.print(...)
+  ---@type string[]
+  local msg = {}
+  for _, x in ipairs({ ... }) do
+    table.insert(msg, type(x) == "string" and x or vim.inspect(x))
   end
-  vim.list_extend(output.lines, vim.split(msg, "\n", { plain = true }))
+  vim.list_extend(output.lines, vim.split(table.concat(msg, " "), "\n", { plain = true }))
 end
 
 function output.render()
