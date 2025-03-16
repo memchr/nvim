@@ -53,6 +53,7 @@ return {
         },
       },
       fuzzy = {
+        implementation = "rust",
         prebuilt_binaries = {
           -- prefer build binary locally
           download = false,
