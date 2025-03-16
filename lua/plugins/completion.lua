@@ -18,6 +18,9 @@ return {
         nerd_font_variant = "normal",
       },
       completion = {
+        accept = {
+          dot_repeat = false,
+        },
         -- Show documentation when selecting a completion item
         documentation = { auto_show = true, auto_show_delay_ms = 250 },
 
