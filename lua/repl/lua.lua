@@ -34,15 +34,24 @@ function output.init()
   api.nvim_buf_set_lines(output.buffer, 0, -1, false, {})
 end
 
+function output.writelines(lines, scheduled)
+  if vim.in_fast_event() and not scheduled then
+    vim.schedule(function()
+      output.writelines(lines, true)
+    end)
+  else
+    api.nvim_buf_set_lines(output.buffer, output.line_count, -1, false, lines)
+    output.line_count = output.line_count + #lines
+  end
+end
+
 function output.print(...)
   ---@type string[]
   local msg = {}
   for _, x in ipairs({ ... }) do
     table.insert(msg, type(x) == "string" and x or vim.inspect(x))
   end
-  local lines = vim.split(table.concat(msg, " "), "\n", { plain = true })
-  api.nvim_buf_set_lines(output.buffer, output.line_count, -1, false, lines)
-  output.line_count = output.line_count + #lines
+  output.writelines(vim.split(table.concat(msg, " "), "\n", { plain = true }))
 end
 
 local function luabuf()
