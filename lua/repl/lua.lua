@@ -4,7 +4,7 @@ local output = {
   window = nil,
   --- @type integer
   buffer = nil,
-  lines = {},
+  line_count = 0,
 }
 
 function output.init()
@@ -30,6 +30,8 @@ function output.init()
       buffer = output.buffer,
     })
   end
+  output.line_count = 0
+  api.nvim_buf_set_lines(output.buffer, 0, -1, false, {})
 end
 
 function output.print(...)
@@ -38,24 +40,19 @@ function output.print(...)
   for _, x in ipairs({ ... }) do
     table.insert(msg, type(x) == "string" and x or vim.inspect(x))
   end
-  vim.list_extend(output.lines, vim.split(table.concat(msg, " "), "\n", { plain = true }))
-end
-
-function output.render()
-  api.nvim_buf_set_lines(output.buffer, 0, -1, false, output.lines)
-  output.lines = {}
+  local lines = vim.split(table.concat(msg, " "), "\n", { plain = true })
+  api.nvim_buf_set_lines(output.buffer, output.line_count, -1, false, lines)
+  output.line_count = output.line_count + #lines
 end
 
 local function luabuf()
   local content = table.concat(api.nvim_buf_get_lines(0, 0, -1, false), "\n")
   local code = loadstring(content)
-  local env = getfenv()
-  setfenv(code, env)
+  local env = getfenv(code)
   env.print = output.print
 
   output.init()
   code()
-  output.render()
 end
 
 api.nvim_create_autocmd("BufEnter", {
