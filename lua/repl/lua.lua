@@ -54,14 +54,14 @@ function output.print(...)
   output.writelines(vim.split(table.concat(msg, " "), "\n", { plain = true }))
 end
 
+local lua_print = _G.print
 local function luabuf()
   local content = table.concat(api.nvim_buf_get_lines(0, 0, -1, false), "\n")
-  local code = loadstring(content)
-  local env = getfenv(code)
-  env.print = output.print
-
   output.init()
-  code()
+
+  _G.print = output.print
+  loadstring(content)()
+  _G.print = lua_print
 end
 
 api.nvim_create_autocmd("BufEnter", {
