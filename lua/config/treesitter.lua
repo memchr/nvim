@@ -59,6 +59,6 @@ local M = {
     },
   },
   sync_install = false, -- Install parsers asynchronously
-  auto_install = true,
+  -- auto_install = true,
 }
 return M
