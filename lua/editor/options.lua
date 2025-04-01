@@ -35,3 +35,5 @@ opt.wildmode = "longest:full,full"
 
 -- TODO: gui
 vim.o.guifont = "Cascadia Code:h11"
+
+vim.opt.exrc = true

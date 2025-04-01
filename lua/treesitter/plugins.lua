@@ -1,5 +1,3 @@
-local config = require("config.treesitter")
-
 ---@type LazySpec[]
 return {
   {
@@ -20,7 +18,7 @@ return {
     },
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
-    opts = require("config.treesitter"),
+    opts = require("treesitter"),
     ---@param opts TSConfig
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
