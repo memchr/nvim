@@ -52,7 +52,7 @@ return {
         reportUnknownMemberType = "information",
         reportUnknownParameterType = "none",
         reportUnknownVariableType = "information",
-        reportUnusedCallResult = "information",
+        reportUnusedCallResult = "none",
         reportUnusedVariable = "information",
       },
     },
