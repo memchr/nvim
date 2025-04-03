@@ -24,10 +24,6 @@ require("plugins").setup(features, {
     lazy = false,
     version = false, -- always use the latest git commit
   },
-  checker = {
-    enabled = true, -- check for plugin updates periodically
-    notify = false, -- notify on update
-  },
   performance = {
     rtp = {
       disabled_plugins = {
