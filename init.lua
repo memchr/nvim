@@ -24,6 +24,9 @@ require("plugins").setup(features, {
     lazy = false,
     version = false, -- always use the latest git commit
   },
+  change_detection = {
+    enabled = false,
+  },
   performance = {
     rtp = {
       disabled_plugins = {
