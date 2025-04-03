@@ -18,7 +18,7 @@ return {
     },
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
-    opts = require("treesitter"),
+    opts = require("treesitter.config"),
     ---@param opts TSConfig
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
