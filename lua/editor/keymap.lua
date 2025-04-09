@@ -36,9 +36,6 @@ function M.setup()
   map("i", ".", ".<c-g>u")
   map("i", ";", ";<c-g>u")
 
-  -- save file
-  map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
-
   -- return to visual mode with same previous selection area after indenting
   map("v", "<", "<gv")
   map("v", ">", ">gv")
