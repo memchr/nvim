@@ -35,10 +35,6 @@ local config = {
     disable = {
       -- NOTE: Dockerfile highlighting is buggy, disabled.
       "dockerfile",
-      -- NOTE: languages with semantic highlighting
-      "cpp",
-      "c",
-      "go",
     },
   },
   indent = { enable = true },
@@ -64,5 +60,6 @@ local config = {
   -- auto_install = true,
 }
 return function()
+  require("treesitter.async_attach")
   require("nvim-treesitter.configs").setup(config)
 end
