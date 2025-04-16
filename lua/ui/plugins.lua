@@ -50,6 +50,9 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = {},
+    init = function()
+      vim.o.ruler = false
+    end,
   },
 
   -- keymap hints
