@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-field
+---@module "lazy"
 ---@type LazySpec[]
 return {
   {
