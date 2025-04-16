@@ -1,4 +1,5 @@
-local au = vim.api.nvim_create_autocmd
+local api = vim.api
+local au = api.nvim_create_autocmd
 local function augroup(group)
   return vim.api.nvim_create_augroup(group, { clear = true })
 end
@@ -21,8 +22,10 @@ au("FileType", {
     vim.bo[event.buf].buflisted = false
     vim.schedule(function()
       vim.keymap.set("n", "q", function()
-        vim.cmd("close")
-        pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+        local w = api.nvim_get_current_win()
+        vim.cmd.wincmd("p")
+        api.nvim_win_close(w, true)
+        pcall(api.nvim_buf_delete, event.buf, { force = true })
       end, {
         buffer = event.buf,
         silent = true,
