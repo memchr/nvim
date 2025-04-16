@@ -4,7 +4,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = "LazyFile",
-    config = require("lsp").config,
+    config = function()
+      local lsp = require("lsp")
+
+      vim.lsp.config("*", lsp.defaults)
+      vim.lsp.enable(lsp.enabled)
+    end,
   },
 
   -- neovim lua development

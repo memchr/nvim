@@ -1,13 +1,25 @@
 local M = {
-  servers = require("lsp.servers"),
-  settings = require("lsp.settings"),
+  ---@type vim.lsp.Config
+  defaults = {},
+  enabled = {
+    "clangd",
+    "basedpyright",
+    "ruff",
+    "gopls",
+    "rust_analyzer",
+    "lua_ls",
+    "bashls",
+    "asm_lsp",
+    "taplo",
+    "neocmake",
+    "jsonls",
+    "ts_ls",
+    "yamlls",
+  },
 }
-function M.config()
-  local lspconfig = require("lspconfig")
-  for server, config in pairs(M.servers) do
-    config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-    config.settings = M.settings
-    lspconfig[server].setup(config)
-  end
+local ok, blink = pcall(require, "blink.cmp")
+if ok then
+  M.defaults.capabilities = blink.get_lsp_capabilities(M.defaults.capabilities)
 end
+
 return M
