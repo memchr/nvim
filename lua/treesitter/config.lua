@@ -1,4 +1,6 @@
-local M = {
+---@type TSConfig
+---@diagnostic disable-next-line: missing-fields
+local config = {
   ensure_installed = {
     "bash",
     "c",
@@ -61,4 +63,6 @@ local M = {
   sync_install = false, -- Install parsers asynchronously
   -- auto_install = true,
 }
-return M
+return function()
+  require("nvim-treesitter.configs").setup(config)
+end
