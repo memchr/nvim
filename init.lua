@@ -1,7 +1,6 @@
 _G.log = require("log").new()
 
 local features = {
-  "apperance",
   "completion",
   "debugging",
   "diagnostic",
