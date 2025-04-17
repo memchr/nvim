@@ -59,7 +59,19 @@ local config = {
   sync_install = false, -- Install parsers asynchronously
   -- auto_install = true,
 }
+
+local higlight_priorities = {
+  go = {
+    ["variable.member"] = 200,
+    ["string.escape"] = 200,
+  },
+  printf = {
+    character = 1000,
+  },
+}
+
 return function()
+  require("treesitter.highlight").override(higlight_priorities)
   require("treesitter.defer_attach")
   require("nvim-treesitter.configs").setup(config)
 end
