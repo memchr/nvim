@@ -37,14 +37,6 @@ return {
       vim.notify.setup(opts)
     end,
   },
-  -- statusline
-  {
-    "nvim-lualine/lualine.nvim",
-    opts = {},
-    init = function()
-      vim.o.ruler = false
-    end,
-  },
 
   -- keymap hints
   {
