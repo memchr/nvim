@@ -49,7 +49,13 @@ return {
   -- keymap hints
   {
     "folke/which-key.nvim",
-    opts = {},
+    ---@module 'which-key'
+    ---@class wk.Opts
+    opts = {
+      delay = function(ctx)
+        return ctx.plugin and 0 or 600
+      end,
+    },
   },
 
   -- ui components library
