@@ -60,6 +60,6 @@ local config = {
   -- auto_install = true,
 }
 return function()
-  require("treesitter.async_attach")
+  require("treesitter.defer_attach")
   require("nvim-treesitter.configs").setup(config)
 end
