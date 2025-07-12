@@ -6,10 +6,7 @@ return {
     "neovim/nvim-lspconfig",
     event = "LazyFile",
     config = function()
-      local lsp = require("lsp")
-
-      vim.lsp.config("*", lsp.defaults)
-      vim.lsp.enable(lsp.enabled)
+      require("lsp").setup()
     end,
   },
 
