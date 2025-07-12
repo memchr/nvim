@@ -1,5 +1,3 @@
-local cache = require("plugins.cache")
-
 local M = {}
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -27,7 +25,12 @@ function M.setup(features, config)
   bootstrap()
 
   config = config or {}
-  config.spec = cache.spec(features)
+  config.spec = vim
+    .iter(features)
+    :map(function(e)
+      return { import = e .. ".plugins" }
+    end)
+    :totable()
 
   -- User event
   local Event = require("lazy.core.handler.event")
