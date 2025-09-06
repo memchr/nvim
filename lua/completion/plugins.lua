@@ -71,6 +71,7 @@ local blink_opts = {
   cmdline = {
     keymap = {
       ["<Tab>"] = { "select_and_accept", "fallback" },
+      ["<CR>"] = { "accept_and_enter", "fallback" },
     },
     completion = { menu = { auto_show = true } },
   },
