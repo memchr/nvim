@@ -54,6 +54,7 @@ require("indent").setup({
     jsonc = spaces[2],
     markdown = spaces[2],
     html = spaces[2],
+    css = spaces[2],
     xml = spaces[2],
 
     lua = spaces[2],
