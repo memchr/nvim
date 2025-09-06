@@ -23,6 +23,9 @@ local M = {
     "jsonls",
     "ts_ls",
     "yamlls",
+    "zls",
+    "cssls",
+    "html",
   },
 }
 
