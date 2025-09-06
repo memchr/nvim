@@ -18,6 +18,7 @@ local features = {
 require("editor").setup()
 require("repl.lua")
 require("gui").setup()
+require("lsp").setup()
 require("plugins").setup(features, {
   defaults = {
     lazy = false,

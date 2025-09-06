@@ -4,10 +4,6 @@ return {
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
-    event = "LazyFile",
-    config = function()
-      require("lsp").setup()
-    end,
   },
 
   -- neovim lua development
