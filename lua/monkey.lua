@@ -1,5 +1,13 @@
 local monkey = {}
----Monkey patch
+--- Monkey patch function `M.func(...)` by wrapping it with `new(M.func, ...)`
+--- The new function receives the original function as its first argument, and then all original call arguments.
+--- # Examples
+--- ```lua
+--- monkey.patch(math, "sqrt", function(orig, x)
+---   print("no a chance")
+---   return x
+--- end)
+--- ```
 ---@param M table model to monkey patch
 ---@param func string function name
 ---@param new fun(orig: function, ...): any replacement function
@@ -11,7 +19,7 @@ function monkey.patch(M, func, new)
   end
 end
 
----Monkey patch once, then restore the original functoin
+---Monkey patch once, then restore the original function upon first successful call
 ---@param M table model to monkey patch
 ---@param func string function name
 ---@param new fun(orig: function, ...): any replacement function
