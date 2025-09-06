@@ -61,8 +61,7 @@ function M.setup()
     ---@type vim.lsp.util.open_floating_preview.Opts
     opts = opts or {}
     opts.max_width = 80
-
-    open_float(contents, syntax, opts, ...)
+    return open_float(contents, syntax, opts, ...)
   end)
 end
 
