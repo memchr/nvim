@@ -1,3 +1,4 @@
+local monkey = require("monkey")
 local M = {
   ---@type vim.lsp.Config
   defaults = {
@@ -54,6 +55,15 @@ function M.setup()
   -- clangd
   -- rust-analyzer
   vim.lsp.on_type_formatting.enable()
+
+  -- limit floating preview width to 80 max
+  monkey.patch(vim.lsp.util, "open_floating_preview", function(open_float, contents, syntax, opts, ...)
+    ---@type vim.lsp.util.open_floating_preview.Opts
+    opts = opts or {}
+    opts.max_width = 80
+
+    open_float(contents, syntax, opts, ...)
+  end)
 end
 
 return M
