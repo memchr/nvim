@@ -1,3 +1,4 @@
+local MAX_LAG_MS = 150
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 local blink_opts = {
@@ -32,6 +33,11 @@ local blink_opts = {
       lua = { inherit_defaults = true, "lazydev" },
     },
     providers = {
+      lsp = {
+        -- After this timeout, show the completion menu before this provider returns. i.e. treating it as async
+        timeout_ms = MAX_LAG_MS,
+        -- always show buffer sources
+        fallbacks = {},
       },
       path = {
         opts = {
@@ -41,6 +47,7 @@ local blink_opts = {
       lazydev = {
         name = "LazyDev",
         module = "lazydev.integrations.blink",
+        timeout_ms = MAX_LAG_MS,
         -- make lazydev completions top priority (see `:h blink.cmp`)
         score_offset = 100,
       },
