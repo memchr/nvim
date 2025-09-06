@@ -73,7 +73,7 @@ return {
       end,
       default_format_opts = {
         timeout_ms = 1000,
-        lsp_format = "fallback",
+        lsp_format = "prefer",
       },
       formatters_by_ft = {
         lua = { "stylua", lsp_format = "never" },
