@@ -79,6 +79,7 @@ return {
         lua = { "stylua", lsp_format = "never" },
         sh = { "shfmt" },
         fish = { "fish_indent" },
+        markdown = { "deno_fmt" },
       },
     },
   },
