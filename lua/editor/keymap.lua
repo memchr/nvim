@@ -40,3 +40,10 @@ map("v", ">", ">gv")
 -- clipboard
 map("v", "<c-c>", '"+y')
 map("n", "<c-c>", '"+yy')
+
+-- stop snippt
+map({ "i", "n", "v" }, "<C-q>", function()
+  if vim.snippet.active() then
+    vim.snippet.stop()
+  end
+end)
