@@ -70,10 +70,7 @@ local blink_opts = {
   },
   cmdline = {
     keymap = {
-      preset = "super-tab",
-      -- TODO: map arrow keys to history search
-      ["<C-p>"] = { "select_prev", "fallback" },
-      ["<C-n>"] = { "select_next", "fallback" },
+      ["<Tab>"] = { "select_and_accept", "fallback" },
     },
     completion = { menu = { auto_show = true } },
   },
