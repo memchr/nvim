@@ -24,9 +24,6 @@ local opts = {
       -- Functions
       ["@function.builtin"] = { fg = C.sky },
 
-      -- vimdoc
-      ["@markup.heading.1.vimdoc"] = { fg = C.blue, style = bold },
-      ["@markup.heading.2.vimdoc"] = { fg = C.sapphire, style = bold },
       -- rainbow (bold)
       bold_rainbow1 = { fg = C.red, style = bold },
       bold_rainbow2 = { fg = C.peach, style = bold },
@@ -42,6 +39,14 @@ local opts = {
       ["@markup.heading.4.markdown"] = { link = "bold_rainbow4" },
       ["@markup.heading.5.markdown"] = { link = "bold_rainbow5" },
       ["@markup.heading.6.markdown"] = { link = "bold_rainbow6" },
+
+      -- vimdoc
+      ["@markup.heading.1.vimdoc"] = { link = "bold_rainbow1" },
+      ["@markup.heading.2.vimdoc"] = { link = "bold_rainbow2" },
+      ["@markup.heading.3.vimdoc"] = { link = "bold_rainbow3" },
+      ["@markup.heading.4.vimdoc"] = { link = "bold_rainbow4" },
+      ["@markup.heading.5.vimdoc"] = { link = "bold_rainbow5" },
+      ["@markup.heading.6.vimdoc"] = { link = "bold_rainbow6" },
 
       -- Editor
       Visual = { style = {} },
