@@ -13,16 +13,27 @@ local opts = {
       -- Identifers
       Constant = { style = { "bold" } },
       ["@lsp.typemod.const.constant"] = { link = "@constant" },
-      --- members
-      ["@lsp.typemod.property.classScope"] = { link = "@variable.member" },
+
+      --- Variable
       ["@variable.member"] = { fg = C.teal },
+      ["@lsp.typemod.property.classScope"] = { link = "@variable.member" },
       ["@variable.parameter"] = { fg = C.red },
 
       -- Types
       ["@type.builtin"] = { fg = C.peach },
+      ["@lsp.type.selfKeyword"] = { fg = C.maroon },
 
       -- Functions
-      ["@function.builtin"] = { fg = C.sky },
+      ["@function.builtin"] = { fg = C.sapphire },
+      ["@lsp.typemod.method.defaultLibrary.rust"] = { link = "@function.builtin" },
+      ["@function.macro"] = { fg = C.lavender },
+
+      -- Macro
+      ["@keyword.directive.define"] = { link = "keyword" },
+      ["@lsp.type.macro.rust"] = { link = "@function.macro" },
+      ["@constant.macro"] = { link = "Constant" },
+      -- conflicts with constant marco
+      ["@lsp.type.macro.c"] = {},
 
       -- rainbow (bold)
       bold_rainbow1 = { fg = C.red, style = bold },
@@ -54,20 +65,21 @@ local opts = {
   end,
   palettes = {
     onedark = {
-      rosewater = "#f5e0dc",
-      flamingo = "#fccbcb",
-      pink = "#fcb8e7",
-      mauve = "#c678dd",
-      red = "#e06c75",
-      maroon = "#f29baa",
       peach = "#d19a66",
-      yellow = "#e5c07b",
-      green = "#98c379",
-      teal = "#96e3cc",
-      sky = "#89dceb",
-      sapphire = "#74c7ec",
-      blue = "#61afef",
+      maroon = "#f19e97",
+      red = "#e06c75",
+      mauve = "#c678dd",
+      pink = "#fcb8e7",
+      flamingo = "#fccbcb",
+      rosewater = "#f5e0dc",
+
       lavender = "#b4befe",
+      blue = "#61afef",
+      sapphire = "#6ec8ef",
+      sky = "#89dceb",
+      teal = "#96e3cc",
+      green = "#98c379",
+      yellow = "#e5c07b",
 
       text = "#abb2bf",
       subtext1 = "#a1a8b5",
