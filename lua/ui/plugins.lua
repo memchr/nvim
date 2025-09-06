@@ -34,16 +34,29 @@ return {
 
   -- notifications
   {
-    "rcarriga/nvim-notify",
+    "j-hui/fidget.nvim",
     opts = {
-      timeout = 3000,
-      stages = "fade",
-      top_down = false,
-    },
-    config = function(_, opts)
-      vim.notify = require("notify")
-      vim.notify.setup(opts)
-    end,
+      progress = {
+        -- set to a lower rate to filter out short-lved tasks
+        -- unit: Hz
+        poll_rate = 10,
+        lsp = {
+          -- small ringbuf size leads to completion message being dropped
+          -- Workaround for https://github.com/j-hui/fidget.nvim/issues/167
+          progress_ringbuf_size = 1024,
+        },
+        ignore_done_already = true,
+        -- issue https://github.com/j-hui/fidget.nvim/issues/171
+        ignore_empty_message = true,
+        display = {},
+      },
+      notification = {
+        override_vim_notify = true,
+        window = {
+          max_width = 80,
+        },
+      },
+    }, -- end of config
   },
 
   -- keymap hints
