@@ -16,7 +16,17 @@ return {
           ["Comment"] = { fg = "$comment" },
         },
       })
-      onedark.load()
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    commit = "30fa4d122d9b22ad8b2e0ab1b533c8c26c4dde86",
+    ---@type CatppuccinOptions
+    ---@diagnostic disable-next-line
+    config = function(self)
+      require("ui.config")
     end,
   },
   -- icons
