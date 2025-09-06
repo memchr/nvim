@@ -16,6 +16,7 @@ local blink_opts = {
       update_delay_ms = 100,
     },
 
+    -- use treesitter to highlight the label text
     menu = {
       draw = {
         treesitter = { "lsp" },
@@ -25,28 +26,32 @@ local blink_opts = {
     -- TODO: enable
     -- ghost_text = { enabled = true },
   },
-  cmdline = {
-    keymap = {
-      preset = "super-tab",
-      ["<C-p>"] = { "select_prev", "fallback" },
-      ["<C-n>"] = { "select_next", "fallback" },
-    },
-    completion = { menu = { auto_show = true } },
-  },
   sources = {
-    default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+    default = { "lsp", "path", "snippets", "buffer" },
+    per_filetype = {
+      lua = { inherit_defaults = true, "lazydev" },
+    },
     providers = {
-      lazydev = {
-        name = "LazyDev",
-        module = "lazydev.integrations.blink",
-        -- make lazydev completions top priority (see `:h blink.cmp`)
-        score_offset = 100,
       },
       path = {
         opts = {
           show_hidden_files_by_default = true,
         },
       },
+      lazydev = {
+        name = "LazyDev",
+        module = "lazydev.integrations.blink",
+        -- make lazydev completions top priority (see `:h blink.cmp`)
+        score_offset = 100,
+      },
+    },
+  },
+  -- Experimental signature help support
+  signature = {
+    enabled = true,
+    window = {
+      -- Press <C-s> (built-in) to show docs
+      show_documentation = false,
     },
   },
   fuzzy = {
@@ -56,9 +61,14 @@ local blink_opts = {
       download = false,
     },
   },
-  -- Experimental signature help support
-  signature = {
-    enabled = true,
+  cmdline = {
+    keymap = {
+      preset = "super-tab",
+      -- TODO: map arrow keys to history search
+      ["<C-p>"] = { "select_prev", "fallback" },
+      ["<C-n>"] = { "select_next", "fallback" },
+    },
+    completion = { menu = { auto_show = true } },
   },
 }
 
