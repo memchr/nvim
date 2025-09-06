@@ -10,7 +10,11 @@ local blink_opts = {
   },
   completion = {
     -- Show documentation when selecting a completion item
-    documentation = { auto_show = true, auto_show_delay_ms = 500 },
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 1000,
+      update_delay_ms = 100,
+    },
 
     menu = {
       draw = {
