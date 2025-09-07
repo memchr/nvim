@@ -65,12 +65,12 @@ local opts = {
   end,
   palettes = {
     onedark = {
-      rosewater = "#f5e0dc",
-      flamingo = "#fccbcb",
-      pink = "#fcb8e7",
+      rosewater = "#f5e1d8",
+      flamingo = "#f2c9c5",
+      pink = "#f89fc3",
       mauve = "#c678dd",
       red = "#e06c75",
-      maroon = "#f19e97",
+      maroon = "#d7847c",
       peach = "#d19a66",
       yellow = "#e5c07b",
       green = "#98c379",
