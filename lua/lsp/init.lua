@@ -12,6 +12,8 @@ local M = {
   },
   enabled = {
     "clangd",
+    -- "basedpyright", -- python
+    "pyrefly", -- python
     "ruff", -- python, formatter and checker
     "gopls", -- go
     "rust_analyzer",
