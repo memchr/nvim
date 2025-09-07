@@ -12,19 +12,18 @@ local M = {
   },
   enabled = {
     "clangd",
-    "basedpyright",
-    "ruff",
-    "gopls",
+    "ruff", -- python, formatter and checker
+    "gopls", -- go
     "rust_analyzer",
+    "zls", -- zig
     "lua_ls",
     "bashls",
     "asm_lsp",
-    "taplo",
-    "neocmake",
+    "taplo", -- toml
+    "neocmake", -- cmake
     "jsonls",
-    "ts_ls",
     "yamlls",
-    "zls",
+    "ts_ls", -- typescript, javascript
     "cssls",
     "html",
   },
