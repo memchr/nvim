@@ -2,23 +2,6 @@
 ---@type LazySpec[]
 return {
   {
-    "navarasu/onedark.nvim",
-    config = function()
-      local onedark = require("onedark")
-      onedark.setup({
-        style = "darker",
-        colors = {
-          comment = "#7f848e",
-        },
-        highlights = {
-          ["@comment"] = { fg = "$comment" },
-          ["@lsp.type.comment"] = { fg = "$comment" },
-          ["Comment"] = { fg = "$comment" },
-        },
-      })
-    end,
-  },
-  {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
