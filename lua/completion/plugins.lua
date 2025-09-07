@@ -36,8 +36,6 @@ local blink_opts = {
       lsp = {
         -- After this timeout, show the completion menu before this provider returns. i.e. treating it as async
         timeout_ms = MAX_LAG_MS,
-        -- always show buffer sources
-        fallbacks = {},
       },
       path = {
         opts = {
