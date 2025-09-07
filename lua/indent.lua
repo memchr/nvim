@@ -21,7 +21,7 @@ local function indent(bufnr, opt)
     indent_size = opt.size
     expandtab = opt.style == "space"
   else
-    error("Unrecognised indent option")
+    error("Unrecognised indent option " .. opt)
   end
 
   bo[bufnr].expandtab = expandtab
@@ -53,7 +53,8 @@ function M.setup(opt)
       callback = function(ev)
         local editorconfig = vim.b[ev.buf].editorconfig
         if editorconfig == nil or next(editorconfig) == nil then
-          indent(ev.buf, opt.filename[ev.file])
+          local file = vim.fs.basename(ev.file)
+          indent(ev.buf, opt.filename[file])
         end
       end,
     })
