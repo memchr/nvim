@@ -27,6 +27,21 @@ return {
     ---@diagnostic disable-next-line
     config = function(self)
       require("ui.catppuccin")
+      vim.cmd.colorscheme("catppuccin")
+
+      vim.api.nvim_create_user_command("ReloadTheme", function()
+        -- reload palettes
+        package.loaded["ui.catppuccin"] = nil
+        require("ui.catppuccin")
+        -- remove palette cache
+        for name, _ in pairs(package.loaded) do
+          if name:match("^catppuccin.") then
+            package.loaded[name] = nil
+          end
+        end
+        -- reload theme
+        vim.cmd.colorscheme("catppuccin")
+      end, {})
     end,
   },
   -- icons
