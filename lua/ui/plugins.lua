@@ -79,6 +79,7 @@ return {
         override_vim_notify = true,
         window = {
           max_width = 80,
+          winblend = 0,
         },
       },
     }, -- end of config
