@@ -26,7 +26,7 @@ return {
     ---@type CatppuccinOptions
     ---@diagnostic disable-next-line
     config = function(self)
-      require("ui.config")
+      require("ui.catppuccin")
     end,
   },
   -- icons
