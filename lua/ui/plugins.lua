@@ -43,6 +43,13 @@ return {
   -- notifications
   {
     "j-hui/fidget.nvim",
+    config = function(_, opts)
+      local fidget = require("fidget")
+      fidget.setup(opts)
+      vim.notify = function(msg, level, opts_)
+        fidget.notify(" \n" .. msg:pad_lines_right(), level, opts_)
+      end
+    end,
     opts = {
       progress = {
         -- set to a lower rate to filter out short-lved tasks
@@ -59,7 +66,6 @@ return {
         display = {},
       },
       notification = {
-        override_vim_notify = true,
         window = {
           max_width = 80,
           winblend = 0,
