@@ -70,6 +70,8 @@ local blink_opts = {
     keymap = {
       ["<Tab>"] = { "select_and_accept", "fallback" },
       -- ["<CR>"] = { "accept_and_enter", "fallback" },
+      ["<Right>"] = {},
+      ["<Left>"] = {},
     },
     completion = { menu = { auto_show = true } },
   },
