@@ -18,7 +18,8 @@ local M = {
     "gopls", -- go
     "rust_analyzer",
     "zls", -- zig
-    "lua_ls",
+    -- "lua_ls",
+    "emmylua_ls",
     "bashls",
     "asm_lsp",
     "taplo", -- toml
