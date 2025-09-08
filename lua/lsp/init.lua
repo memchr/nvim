@@ -29,6 +29,10 @@ local M = {
     "ts_ls", -- typescript, javascript
     "cssls",
     "html",
+
+    -- haskell
+    -- settings schema: https://github.com/haskell/vscode-haskell/blob/master/package.json
+    "hls",
   },
 }
 

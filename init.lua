@@ -19,6 +19,7 @@ require("editor").setup()
 require("repl.lua")
 require("gui").setup()
 require("lsp").setup()
+---@diagnostic disable-next-line
 require("plugins").setup(features, {
   defaults = {
     lazy = false,
@@ -56,6 +57,7 @@ require("indent").setup({
     html = spaces[2],
     css = spaces[2],
     xml = spaces[2],
+    haskell = spaces[2],
 
     lua = spaces[2],
     nftables = spaces[2],
