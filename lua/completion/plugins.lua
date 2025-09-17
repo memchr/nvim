@@ -29,9 +29,6 @@ local blink_opts = {
   },
   sources = {
     default = { "lsp", "path", "snippets", "buffer" },
-    per_filetype = {
-      lua = { inherit_defaults = true, "lazydev" },
-    },
     providers = {
       lsp = {
         -- After this timeout, show the completion menu before this provider returns. i.e. treating it as async
@@ -77,7 +74,6 @@ local blink_opts = {
   },
 }
 
----@module "lazy"
 ---@type LazySpec[]
 return {
   {
