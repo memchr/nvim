@@ -48,6 +48,7 @@ function Stack:find(f, n)
     local item = self:peek(i)
     if f(item) then
       n = n - 1
+      ---@diagnostic disable-next-line
       if n == 0 then
         return item
       end

@@ -78,7 +78,7 @@ return {
   {
     "folke/which-key.nvim",
     ---@module 'which-key'
-    ---@class wk.Opts
+    ---@type wk.Opts
     opts = {
       delay = function(ctx)
         return ctx.plugin and 0 or 600

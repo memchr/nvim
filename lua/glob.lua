@@ -1,3 +1,5 @@
+---@diagnostic disable: undefined-field
+
 local ffi = require("ffi")
 
 ffi.cdef([[

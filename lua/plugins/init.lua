@@ -36,6 +36,7 @@ function M.setup(features, config)
   local Event = require("lazy.core.handler.event")
   Event.mappings.LazyFile = { id = "LazyFile", event = { "BufReadPost", "BufNewFile", "BufWritePre" } }
 
+  ---@diagnostic disable-next-line
   require("lazy").setup(config)
 end
 

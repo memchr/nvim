@@ -1,15 +1,15 @@
 ---@class indent.Opt
----@field size number
+---@field size integer
 ---@field style "space"|"tab"
 
 ---@class indent.SetupOpt
----@field filetype table<string,indent.Opt|number>
----@field filename table<string,indent.Opt|number>?
+---@field filetype table<string,indent.Opt|integer>
+---@field filename table<string,indent.Opt|integer>?
 
 local M = {}
 
 ---@param bufnr integer
----@param opt indent.Opt | number
+---@param opt indent.Opt | integer
 local function indent(bufnr, opt)
   local bo = vim.bo
   local indent_size

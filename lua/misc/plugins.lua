@@ -1,4 +1,3 @@
----@module "lazy"
 ---@type LazySpec[]
 return {
   { "nfnty/vim-nftables" },

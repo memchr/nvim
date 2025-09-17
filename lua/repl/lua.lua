@@ -1,9 +1,9 @@
 local api = vim.api
 local output = {
   --- @type integer
-  window = nil,
+  window = 0,
   --- @type integer
-  buffer = nil,
+  buffer = 0,
   line_count = 0,
 }
 
@@ -14,7 +14,7 @@ function output.init()
   end
 
   if not output.window or not api.nvim_win_is_valid(output.window) then
-    output.window = vim.api.nvim_open_win(output.buffer, false, {
+    output.window = api.nvim_open_win(output.buffer, false, {
       split = "below",
       width = vim.o.columns,
       height = 15,
@@ -60,6 +60,7 @@ local function luabuf()
   output.init()
 
   _G.print = output.print
+  ---@diagnostic disable-next-line
   loadstring(content)()
   _G.print = lua_print
 end
