@@ -1,7 +1,7 @@
 local api = vim.api
 local au = api.nvim_create_autocmd
 local function augroup(group)
-  return vim.api.nvim_create_augroup(group, { clear = true })
+  return api.nvim_create_augroup(group, { clear = true })
 end
 
 au("TextYankPost", {
@@ -36,7 +36,7 @@ au("FileType", {
 })
 
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+au({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),
   callback = function(event)
     if event.match:match("^%w%w+:[\\/][\\/]") then
