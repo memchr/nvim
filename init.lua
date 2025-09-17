@@ -1,5 +1,7 @@
 _G.log = require("log").new()
 
+require("lib")
+
 local features = {
   "completion",
   "debugging",
