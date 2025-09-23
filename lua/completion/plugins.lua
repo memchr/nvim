@@ -22,6 +22,7 @@ local blink_opts = {
       draw = {
         treesitter = { "lsp" },
       },
+      auto_show_delay_ms = 80,
     },
     -- Display a preview of the selected item on the current line
     -- TODO: enable
