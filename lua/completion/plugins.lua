@@ -1,8 +1,23 @@
 local MAX_LAG_MS = 150
+local function accept_index(n)
+  return {
+    function(cmp)
+      cmp.accept({ index = n })
+    end,
+  }
+end
+
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 local blink_opts = {
-  keymap = { preset = "super-tab" },
+  keymap = {
+    preset = "super-tab",
+    ["<A-1>"] = accept_index(1),
+    ["<A-2>"] = accept_index(2),
+    ["<A-3>"] = accept_index(3),
+    ["<A-4>"] = accept_index(4),
+    ["<A-5>"] = accept_index(5),
+  },
   appearance = {
     -- Fallback to nvi-cmp's highlight groups. compatibility
     use_nvim_cmp_as_default = true,
