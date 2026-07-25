@@ -1,1 +1,0 @@
----@alias Plugins string[]|LazyPluginSpec[]|LazySpecImport[]

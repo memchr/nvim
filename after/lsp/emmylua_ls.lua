@@ -1,82 +1,81 @@
---- add plugin runtimes if root_dir is under neovim config or data path
----@param client vim.lsp.Client
-local function setup_plugin_runtimes(client)
-  if client.root_dir == nil then
-    return
-  end
+local H = {}
 
-  local root_dir = vim.fs.abspath(client.root_dir)
-  local in_stdpath = vim
-    .iter({
-      vim.fn.stdpath("config"),
-      vim.fn.stdpath("data"),
-    })
-    :any(function(stdpath)
-      return root_dir:sub(1, #stdpath) == stdpath
-    end)
-
-  if not in_stdpath then
-    return
-  end
-
-  local library = vim.tbl_get(client.settings, "Lua", "workspace", "library") or {}
-  client.settings = vim.tbl_deep_extend("force", client.settings, {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      workspace = {
-        library = vim.list_extend(
-          library,
-          vim
-            .iter(require("lazy.core.config").spec.plugins)
-            :map(function(_, v)
-              return vim.fs.joinpath(v.dir, "lua")
-            end)
-            :totable()
-        ),
-      },
-    },
-  })
-  client:notify("workspace/didChangeConfiguration", {})
-end
+local api = vim.api
 
 ---@type vim.lsp.Config
-return {
-  cmd = { "emmylua_ls", "--editor", "neovim" },
-
-  ---@param client vim.lsp.Client
-  on_attach = function(client, bufnr)
-    setup_plugin_runtimes(client)
-
-    vim.api.nvim_buf_create_user_command(bufnr, "DumpLuarc", function()
-      local settings = vim.deepcopy(vim.tbl_get(client.settings, "Lua") or {})
-      settings["$schema"] =
-        "https://raw.githubusercontent.com/EmmyLuaLs/emmylua-analyzer-rust/refs/heads/main/crates/emmylua_code_analysis/resources/schema.json"
-      local json = vim.json.encode(settings)
-      local f, err = io.open(".luarc", "w")
-      if f == nil then
-        vim.notify(("Failed to dump luarc: %s"):format(err), vim.log.levels.ERROR)
-      end
-      ---@diagnostic disable: need-check-nil
-      f:write(json)
-      f:close()
-    end, {})
-  end,
-
+local M = {
+  -- cmd = vim.lsp.rpc.connect('localhost', 5007),
+  -- TODO: diagnostics only on opened files
+  -- [configuration guide](https://github.com/EmmyLuaLs/emmylua-analyzer-rust/blob/main/docs/config/emmyrc_json_EN.md)
   settings = {
-    -- see: https://github.com/EmmyLuaLs/emmylua-analyzer-rust/blob/main/docs/config/emmyrc_json_EN.md
-    Lua = {
+    emmylua = {
       completion = {
         autoRequire = false,
         callSnippet = false,
       },
-      workspace = {
-        library = {
-          vim.env.VIMRUNTIME,
-        },
-      },
     },
   },
-  commands = {},
+
+  on_init = function (client)
+    -- If the workspace has its own emmylua_ls/lua_ls config file, defer to it.
+    if client.workspace_folders then
+      local path = client.workspace_folders[1].name
+      if path ~= vim.fn.stdpath('config')
+        and (vim.uv.fs_stat(path .. '/.emmyrc.json') or vim.uv.fs_stat(path .. '/.luarc.json')) then
+        client.config.settings = {}
+      end
+    end
+  end,
+  ---@param client vim.lsp.Client
+  on_attach = function (client, buf)
+    api.nvim_buf_create_user_command(buf, 'LspEmmyluaAddNvimRuntime', function ()
+      H.load_nvim_runtime(client)
+    end)
+    H.should_load_nvim_runtime(client, buf)
+  end,
 }
+
+function H.should_load_nvim_runtime(client, buf)
+  if client.__nvim_runtime_loaded then
+    return
+  end
+  local bufpath = api.nvim_buf_get_name(buf)
+
+  -- load nvim runtime when
+  if vim.fs.basename(bufpath) == '.nvim.lua' -- editing .nvim.lua
+    or vim.iter({
+      vim.fn.stdpath('config'),
+      vim.fn.stdpath('data'),
+      unpack(vim.fn.stdpath('data_dirs')),
+      unpack(vim.fn.stdpath('config_dirs')),
+    }):any(x -> bufpath:sub(1, #x) == x) -- inside one of stdpath
+  then
+    H.load_nvim_runtime(client)
+    client.__nvim_runtime_loaded = true
+  end
+end
+
+--- notify language server to load neovim runtime and plugins into workspace
+---@param client vim.lsp.Client
+function H.load_nvim_runtime(client)
+  client.settings.emmylua = vim.tbl_deep_extend('force', client.settings.emmylua, {
+    runtime = {
+      version = 'LuaJIT',
+      requirePattern = { -- (see `:h lua-module-load`)
+        'lua/?.lua',
+        'lua/?/init.lua',
+      },
+    },
+    diagnostics = { globals = { 'vim' } },
+    workspace = {
+      -- HACK: for some reason emmylua_ls doesn't provide diagnostics for library nested in root_dir
+      library = vim.tbl_filter(
+        x -> x ~= vim.fs.joinpath(vim.fn.stdpath('config'), 'after'),
+        api.nvim_get_runtime_file('', true)
+      ),
+    },
+  })
+  client:notify('workspace/didChangeConfiguration', { settings = client.settings })
+end
+
+return M

@@ -1,0 +1,20 @@
+[syntax]
+level = "LuaJIT3"
+
+[indent]
+kind = "Space"
+width = 2
+
+[layout]
+prefer_call_args_layout_from_source = true
+prefer_table_layout_from_source = true
+max_line_width = 100
+
+[output]
+trailing_comma = "Multiline"
+quote_style = "Single"
+
+[align]
+continuous_assign_statement = true
+table_field = true
+# https://github.com/EmmyLuaLs/emmylua-analyzer-rust/blob/main/docs/emmylua_formatter/options_EN.md
